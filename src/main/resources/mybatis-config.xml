@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="config.properties">
+		<property name="username" value="scott" />
+		<property name="password" value="scott" />
+	</properties>
+	<!-- 定义别名 -->
+
+	<!-- 定义数据库信息， 默认使用development 数据库构建环境 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 采用jdbc事物管理 -->
+			<transactionManager type="JDBC" />
+			<!-- 使用mybatis自己的链接池 -->
+			<dataSource type="POOLED">
+				<!-- 配置数据库链接信息 -->
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 定义映射器 -->
+	<mappers>
+		<!-- <mapper resource="cn\tyler\mybatis\mapper\MapperDemo.xml" /> -->
+		<!-- 用classs  mapper接口必须要和mapperxml文件在同一个目录中 -->
+		<mapper class="cn.tyler.mybatis.mapper.MapperDemo"/>
+	</mappers>
+</configuration>
